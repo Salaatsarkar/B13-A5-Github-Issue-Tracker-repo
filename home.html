@@ -28,37 +28,77 @@
 <body>
     <!-- header section start -->
     <header class="bg-base-100  shadow-sm">
-        <div class="navbar  w-11/12 mx-auto">
-            <!-- left side start -->
-            <div class="flex-1 flex items-center gap-2">
-                <img class="w-8 h-8" src="./assets/github-logo.png" alt="logo">
-                <a class="font-semibold text-2xl">GitHub Issues Tracker</a>
-            </div>
-            <!-- left side end -->
-            <div class="flex gap-3">
-                <!-- <input type="text"  placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" /> -->
-                 <!-- search field start -->
-                <label class="input">
-                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+        <div class="navbar w-11/12 mx-auto">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                        </g>
-                    </svg>
-                    <input type="search" placeholder="Search issues..." />
-                </label>
-                <!-- search field end -->
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="-1"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <div class="flex flex-col gap-3">
+                            <!-- <input type="text"  placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" /> -->
+                            <!-- search field start -->
+                            <label class="input">
+                                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                        stroke="currentColor">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.3-4.3"></path>
+                                    </g>
+                                </svg>
+                                <input type="search" placeholder="Search issues..." />
+                            </label>
+                            <!-- search field end -->
 
-                <!-- navbar button start -->
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
-                <!-- navbar button end -->
+                            <!-- navbar button start -->
+                            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                            <!-- navbar button end -->
+                        </div>
+                    </ul>
+                </div>
+                <!-- left side start -->
+                <div class="flex-1 flex items-center gap-2">
+                    <img class="w-8 h-8" src="./assets/github-logo.png" alt="logo">
+                    <a class="font-semibold text-2xl">GitHub Issues Tracker</a>
+                </div>
+                <!-- left side end -->
+            </div>
+            <div class="navbar-end hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+
+                    <div class="flex gap-3">
+                        <!-- <input type="text"  placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" /> -->
+                        <!-- search field start -->
+                        <label class="input">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                    stroke="currentColor">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </g>
+                            </svg>
+                            <input type="search" placeholder="Search issues..." />
+                        </label>
+                        <!-- search field end -->
+
+                        <!-- navbar button start -->
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                        <!-- navbar button end -->
+                    </div>
+                </ul>
             </div>
         </div>
     </header>
-     <!-- header section end -->
+    <!-- header section end -->
 
-     
+
+
+
 
 
 
