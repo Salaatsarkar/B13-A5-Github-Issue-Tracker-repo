@@ -13,6 +13,20 @@ const openCardContainer = document.getElementById('open-card-container');
 const closeCardContainer = document.getElementById('close-card-container');
 const issueCount = document.getElementById('issue-count');
 
+
+//function for showing spinner start
+const manageSpinner = (status) =>{
+    if(status === true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("card-container").classList.add("hidden");
+    }
+    else{
+         document.getElementById("card-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+};
+//function for showing spinner end
+
 //function for change tab
 function toggleTab(tab) {
     
@@ -75,6 +89,7 @@ const createElements = (arr) =>{
 
 // all card api 
 const loadCard = () => {
+    manageSpinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then(res => res.json())
     .then(json =>{
@@ -91,7 +106,7 @@ const displayCard = (cards) =>{
              //3. create element
         const newCard= document.createElement("div");
         newCard.innerHTML = `
-              <div class="card-body p-5  shadow-lg space-y-2 rounded-xl border-t-4 ${card.status === 'open'? 'border-green-500' : 'border-purple-500'} overflow-hidden">
+              <div onclick="cardDetails(${card.id})" class="card-body p-5  shadow-lg space-y-2 rounded-xl border-t-4 ${card.status === 'open'? 'border-green-500' : 'border-purple-500'} overflow-hidden">
                 <div class="flex justify-between items-center">
                  <img src="./assets/${card.status === 'open' ? 'Open-Status.png' : 'Closed- Status .png'}" alt="">
                     <button class="${card.priority === 'high'
@@ -107,7 +122,7 @@ const displayCard = (cards) =>{
                 </div>
                     <div class="divider -mx-5"></div>
                     <p class="text-neutral/50">#1 by ${card.author}</p>
-                    <p class="text-neutral/50">${card.updatedAt}</p>
+                    <p class="text-neutral/50">${card.createdAt}</p>
             </div>
         
         `;
@@ -120,9 +135,67 @@ const displayCard = (cards) =>{
         : closeCardContainer.appendChild(cloneCard)
 
     })
-
+    manageSpinner(false);
    changeDashboard()
 };
+// modal 
+const cardDetails = async (id) =>{
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayCardDetails(details.data);
+};
+
+const displayCardDetails = (info)=>{
+    const detailsBox = document.getElementById('details-container');
+    detailsBox.innerHTML = `
+    <div class="space-y-3 ">
+        <h1 class="font-bold text-2xl">${info.title}</h1>
+        <div class="flex space-x-2 items-center">
+            <button class="${info.status === 'open'? 'btn btn-success' : 'btn btn-primary'} rounded-full">${info.status}</button>
+            <div class="flex items-center gap-1">
+                <div class="w-1 h-1 rounded-full bg-gray-500"></div>
+                <p class="text-neutral/50">Opened by ${info.assignee}</p>
+            </div>
+           <div class="flex items-center gap-1">
+            <div class="w-1 h-1 rounded-full bg-gray-500" ></div>
+             <p class="text-neutral/50">${info.updatedAt}</p>
+           </div>
+        </div>
+        <div class="btns flex gap-2 items-center">
+           ${createElements(info.labels)}
+        </div>
+        <p class="text-neutral/50">${info.description}</p>
+
+        <div class="bg-base-200 flex justify-around items-center p-5 rounded-lg">
+            <div>
+                <p class="text-neutral/50">Assignee:</p>
+                <p class="font-semibold">${info.assignee}</p>
+            </div>
+            <div>
+                <p class="text-neutral/50">Priority:</p>
+                <button class="${info.priority === 'high'
+                         ? 'btn btn-secondary'
+                        : info.priority === 'medium'
+                       ?'btn btn-warning'
+                       :'btn btn-neutral'} rounded-full px-10">${info.priority.toUpperCase()}</button>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+
+    `;
+    document.getElementById("card_modal").showModal();
+};
+
+
+
 
 function changeDashboard() {
 
