@@ -94,85 +94,90 @@
             </div>
         </div>
     </header>
-    <!-- header section end --> 
+    <!-- header section end -->
 
     <!-- tab section start -->
-     <section class="bg-base-100  shadow-sm w-10/12 mx-auto mt-10 p-6 space-x-4 rounded-sm">
-        <button id="btn-all" onclick=" toggleTab('all')" class="btn ">All</button>
+    <section class="bg-base-100  shadow-sm w-10/12 mx-auto mt-10 p-6 space-x-4 rounded-sm">
+        <button id="btn-all" onclick=" toggleTab('all')" class="btn">All</button>
         <button id="btn-open" onclick="toggleTab('open')" class="btn">Open</button>
         <button id="btn-close" onclick="toggleTab('close')" class="btn">Closed</button>
-     </section>
-      <!-- tab section end -->
+    </section>
+    <!-- tab section end -->
 
-      <!-- issue count section start -->
-       <section class="bg-base-100  shadow-sm w-10/12 mx-auto mt-5 p-6 flex justify-between items-center rounded-sm ">
+    <!-- issue count section start -->
+    <section
+        class="bg-base-100  shadow-sm w-10/12 mx-auto mt-5 p-6 flex flex-col gap-6 md:flex-row justify-between items-center rounded-sm ">
         <!-- left side start -->
-        <div class="left-side flex gap-3 items-center">
-            <img src="./assets/Aperture.png" alt="aperture">
+        <div class="left-side flex flex-col md:flex-row gap-3 items-center text-center md:text-left">
+            <img class="" src="./assets/Aperture.png" alt="aperture">
             <div>
                 <h2 class="font-semibold"><span id="issue-count">50</span> Issues</h2>
                 <p class="text-neutral/50">Track and manage your project issues</p>
             </div>
         </div>
-          <!-- left side end -->
+        <!-- left side end -->
 
-          <!-- right side start -->
-         <div class="right-side flex gap-3 items-center">
-             <div class="flex gap-1 items-center">
-                    <div class="w-3 h-3 rounded-full bg-[#00A96E]"></div>
-                    <p>Open</p>
-                </div>
-                <div class="flex gap-1 items-center">
-                    <div class="w-3 h-3 rounded-full bg-[#A855F7]"></div>
-                    <p>Closed</p>
-                </div>
-         </div>
+        <!-- right side start -->
+        <div class="right-side flex gap-3 items-center">
+            <div class="flex gap-1 items-center">
+                <div class="w-3 h-3 rounded-full bg-[#00A96E]"></div>
+                <p>Open</p>
+            </div>
+            <div class="flex gap-1 items-center">
+                <div class="w-3 h-3 rounded-full bg-[#A855F7]"></div>
+                <p>Closed</p>
+            </div>
+        </div>
 
-            <!-- right side end -->
-
-
-       </section>
-       <!-- issue count section end -->
-
-       <!-- card  section start -->
-        <section id="card-container" class="bg-base-100  shadow-sm w-10/12 mx-auto  p-6 rounded-sm grid grid-cols-3 gap-2" >
+        <!-- right side end -->
 
 
-<!-- 
-              <div class="card-body p-5  shadow-lg space-y-2">
-                <div class="flex justify-between items-center">
-                    <img src="./assets/Open-Status.png" alt="">
-                    <button class="btn btn-secondary btn-soft rounded-full px-10">HIGH</button>
-                </div>
-                <h2 class="font-semibold ">Fix navigation menu on mobile devices</h2>
-                <p class="text-neutral/50">The navigation menu doesn't collapse properly on mobile devices...</p>
-                <div class="flex gap-2 ">
-                    <button class="btn btn-secondary btn-soft rounded-full" ><i class="fa-solid fa-bug"></i> BUG</button>
-                    <button class="btn btn-warning btn-soft rounded-full"><i class="fa-solid fa-life-ring"></i>HELP WANTED</button>
-                </div>
-                    <div class="divider -mx-5"></div>
-                    <p class="text-neutral/50">#1 by john_doe</p>
-                    <p class="text-neutral/50">1/15/2024</p>
-            </div> -->
+    </section>
+    <!-- issue count section end -->
+
+    <!-- card  section start -->
+    <section id="card-container"
+        class="bg-base-100  shadow-sm w-10/12 mx-auto  p-6 rounded-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 hidden">
+
+    </section>
+    <!-- card  section end -->
+
+    <!-- Open card section display  start-->
+    <section id="open-card-container"
+        class="bg-base-100 shadow-sm w-10/12 mx-auto rounded-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-6 hidden">
+
+       
 
 
-        </section>
+    </section>
+    <!--Open  card section display end -->
 
-        <!-- card  section end -->
-
-
- <!-- // <button class="btn btn-secondary btn-soft rounded-full" ><i class="fa-solid fa-bug"></i> BUG</button>
-                    // <button class="btn btn-warning btn-soft rounded-full"><i class="fa-solid fa-life-ring"></i>HELP WANTED</button> -->
-
+    <!-- close card section display start -->
+    <section id="close-card-container" class="bg-base-100 shadow-sm w-10/12 mx-auto rounded-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-6 hidden">
 
 
        
-       
+
+    </section>
+    <!--Close  card section display  end -->
+
+
+    <!-- if(currentTab === "open")
+   {
+     //create card for open
+    const openCard = document.createElement("div");
+    openCard.innerHTML = `
+    <p>card open </P>
+    `;
+    openCardContainer.append(openCard);
+
+   } -->
+
 
     <!-- javascript link -->
-     <script src="./script/github.js"></script>
-     <!-- <script src="./script/machine.js"></script> -->
-    
+    <script src="./script/github.js"></script>
+    <!-- <script src="./script/machine.js"></script> -->
+
 
 </body>
 
