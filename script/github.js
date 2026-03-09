@@ -11,6 +11,7 @@ const closedContainer = document.getElementById('btn-close');
 const allCardContainer = document.getElementById('card-container');
 const openCardContainer = document.getElementById('open-card-container');
 const closeCardContainer = document.getElementById('close-card-container');
+const issueCount = document.getElementById('issue-count');
 
 //function for change tab
 function toggleTab(tab) {
@@ -49,14 +50,7 @@ function toggleTab(tab) {
     else{
         closeCardContainer.classList.remove('hidden');
     }
-
-
-
-
-
-
-
-
+    changeDashboard();
 };
 
 //group of html elements
@@ -125,11 +119,23 @@ const displayCard = (cards) =>{
         ? openCardContainer.appendChild(cloneCard)
         : closeCardContainer.appendChild(cloneCard)
 
-       
-
     })
 
-   
+   changeDashboard()
 };
+
+function changeDashboard() {
+
+    const countObject = {
+        all: allCardContainer.children.length,
+        open: openCardContainer.children.length,
+        close: closeCardContainer.children.length,
+    };
+
+   issueCount.innerText = countObject[currentTab];
+    
+}
+
+changeDashboard();
 loadCard();
- toggleTab(currentTab);
+toggleTab(currentTab);
