@@ -58,8 +58,11 @@ const displayCard = (cards) =>{
               <div class="card-body p-5  shadow-lg space-y-2 rounded-xl border-t-4 ${card.status === 'open'? 'border-green-500' : 'border-purple-500'}">
                 <div class="flex justify-between items-center">
                  <img src="./assets/${card.status === 'open' ? 'Open-Status.png' : 'Closed- Status .png'}" alt="">
-                
-                    <button class="btn btn-secondary btn-soft rounded-full px-10">${card.priority}</button>
+                    <button class="${card.priority === 'high'
+                         ? 'btn btn-secondary btn-soft'
+                        : card.priority === 'medium'
+                       ?'btn btn-warning btn-soft'
+                       :'btn btn-neutral btn-soft'} rounded-full px-10">${card.priority.toUpperCase()}</button>
                 </div>
                 <h2 class="font-semibold text-sm ">${card.title}</h2>
                 <p class="text-neutral/50 text-sm">${card.description}</p>
