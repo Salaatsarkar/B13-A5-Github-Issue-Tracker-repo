@@ -13,7 +13,6 @@ const openCardContainer = document.getElementById('open-card-container');
 const closeCardContainer = document.getElementById('close-card-container');
 const issueCount = document.getElementById('issue-count');
 
-
 //function for showing spinner start
 const manageSpinner = (status) =>{
     if(status === true){
@@ -25,8 +24,6 @@ const manageSpinner = (status) =>{
         document.getElementById("spinner").classList.add("hidden");
     }
 };
-//function for showing spinner end
-
 //function for change tab
 function toggleTab(tab) {
     
@@ -45,15 +42,11 @@ function toggleTab(tab) {
             tabName.classList.add(...tabInactive);
         }
     }
-
-
     //add hidden class in containers
     const webpages = [allCardContainer, openCardContainer, closeCardContainer]
     for(const webpage of webpages) {
         webpage.classList.add('hidden');
     }
-
-
     //remove hidden class in click sections
     if(tab === 'all') {
         allCardContainer.classList.remove('hidden');
@@ -100,13 +93,15 @@ const displayCard = (cards) =>{
     //console.log(cards);
     //1.get parent element
     const cardContainer = document.getElementById('card-container');
-  // cardContainer.innerHTML = "";
+    cardContainer.innerHTML = "";
+    openCardContainer.innerHTML = "";
+    closeCardContainer.innerHTML = "";
     //2. get into every cards
     cards.forEach(card => {
              //3. create element
         const newCard= document.createElement("div");
         newCard.innerHTML = `
-              <div onclick="cardDetails(${card.id})" class="card-body p-5  shadow-lg space-y-2 rounded-xl border-t-4 ${card.status === 'open'? 'border-green-500' : 'border-purple-500'} overflow-hidden">
+              <div onclick="cardDetails(${card.id})" class="card-body p-5  shadow-lg space-y-2 rounded-xl border-t-4 ${card.status === 'open'? 'border-green-500' : 'border-purple-500'} overflow-hidden h-96">
                 <div class="flex justify-between items-center">
                  <img src="./assets/${card.status === 'open' ? 'Open-Status.png' : 'Closed- Status .png'}" alt="">
                     <button class="${card.priority === 'high'
@@ -124,7 +119,6 @@ const displayCard = (cards) =>{
                     <p class="text-neutral/50">#1 by ${card.author}</p>
                     <p class="text-neutral/50">${card.createdAt}</p>
             </div>
-        
         `;
         //4. append child
          cardContainer.appendChild(newCard);
@@ -133,11 +127,28 @@ const displayCard = (cards) =>{
         card.status === "open"
         ? openCardContainer.appendChild(cloneCard)
         : closeCardContainer.appendChild(cloneCard)
-
     })
     manageSpinner(false);
    changeDashboard()
 };
+
+const searchInput = document.getElementById('textbox');
+searchInput.addEventListener("input",function(){
+    const value = searchInput.value.toLowerCase().replace(/\s/g, "");
+    if(value === ""){
+        loadCard();
+        return;
+    }
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`)
+    .then(res => res.json())
+    .then(data =>{
+        //displayCard(data.data);
+         const filtered = data.data.filter(item => item.title.toLowerCase().replace(/\s/g, "").includes(value));
+        displayCard(filtered);
+    })
+});
+
+
 // modal 
 const cardDetails = async (id) =>{
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
@@ -193,10 +204,6 @@ const displayCardDetails = (info)=>{
     `;
     document.getElementById("card_modal").showModal();
 };
-
-
-
-
 function changeDashboard() {
 
     const countObject = {
@@ -206,8 +213,8 @@ function changeDashboard() {
     };
 
    issueCount.innerText = countObject[currentTab];
-    
-}
+};
+
 
 changeDashboard();
 loadCard();
