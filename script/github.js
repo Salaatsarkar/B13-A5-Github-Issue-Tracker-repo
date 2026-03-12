@@ -117,7 +117,7 @@ const displayCard = (cards) =>{
                 </div>
                     <div class="divider -mx-5"></div>
                     <p class="text-neutral/50">#1 by ${card.author}</p>
-                    <p class="text-neutral/50">${card.createdAt}</p>
+                    <p class="text-neutral/50">${new Date(card.createdAt).toLocaleString()}</p>
             </div>
         `;
         //4. append child
@@ -166,11 +166,11 @@ const displayCardDetails = (info)=>{
             <button class="${info.status === 'open'? 'btn btn-success' : 'btn btn-primary'} rounded-full">${info.status}</button>
             <div class="flex items-center gap-1">
                 <div class="w-1 h-1 rounded-full bg-gray-500"></div>
-                <p class="text-neutral/50">Opened by ${info.assignee}</p>
+                <p class="text-neutral/50">${info.status} by ${info.assignee}</p>
             </div>
            <div class="flex items-center gap-1">
             <div class="w-1 h-1 rounded-full bg-gray-500" ></div>
-             <p class="text-neutral/50">${info.updatedAt}</p>
+             <p class="text-neutral/50">${new Date(info.updatedAt).toLocaleString()}</p>
            </div>
         </div>
         <div class="btns flex gap-2 items-center">
