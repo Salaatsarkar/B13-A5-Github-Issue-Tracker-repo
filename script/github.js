@@ -134,7 +134,7 @@ const displayCard = (cards) =>{
 
 const searchInput = document.getElementById('textbox');
 searchInput.addEventListener("input",function(){
-    const value = searchInput.value.toLowerCase().replace(/\s/g, "");
+      const value = searchInput.value.toLowerCase().replace(/\s/g, "");
     if(value === ""){
         loadCard();
         return;
@@ -146,8 +146,13 @@ searchInput.addEventListener("input",function(){
          const filtered = data.data.filter(item => item.title.toLowerCase().replace(/\s/g, "").includes(value));
         displayCard(filtered);
     })
+   
 });
 
+   
+
+    
+ 
 
 // modal 
 const cardDetails = async (id) =>{
