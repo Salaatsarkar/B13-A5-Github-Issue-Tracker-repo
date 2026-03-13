@@ -24,16 +24,30 @@
 5. Declare array or object by this variable, we won't modify or change the reference but we will change the value of inside.
 
 2️⃣ What is the spread operator (...)?
--> 
+-> Spread operator is a feature of ES6 in Javascript. It is used in array,object,the elements of iterable to separate.Meaning that separate them out one by one . By the three dots(...) is defined this spread operator. It helps to make code clean , small and easy.
 
-
-
-
-
-
-
-
+--> uses of spread operator(...) in different works
+2.1 We can use this operator to merge or copy an object.
+2.2 By the help of it we can sent the elements of array one by one as an argument of the function.
+2.3 we can use it to spread the characters of strings.
+2.4 In the array,we can add new elements.
+2.5 we can merge or add multiples arrays together.
+2.6 we can make the copy of an array by spread operator.
+2.7 This operator helps to copy, add or mege elements of array.
 
 3️⃣ What is the difference between map(), filter(), and forEach()?
+-> These are the three array methods of javascript. These methods are used to work on every elements of array. But according the way of working process and result, these methods are different from each other.
+### filter()
+It is used to select elements based on a specific condition. It returns a new array. This method don't change the main or original array.
+ 
+### map()
+It is used to run a function on each element of the array to make a new array. It don't change the main array. This method is used to transform the array.Always it also returns a new array.
+
+### forEach()
+It is used to run a loop on each element of array. It works as a loop.It won't return any value. It is used as partial work. It don't return any new array.
+
 4️⃣ What is an arrow function?
+-> An Arrow Function(=>) is a modern way of declaration of function.In 2015, it came from ES6. The work of normal function and arrow function is same. But there is some difference to the way of write code. It is small and readable rather than a normal function. Arrow Function is small and easy to write code. If we write arrow function in one line, don't need to write return. By the help of arrow function, we can save our time to write our code in the shortcut.
+
 5️⃣ What are template literals?
+-> It is a modern way to make string or text. We use bactick sign(``) to work with this template literals. By the help of it we can create dynamic strings. Meaning that we can add expression and add different type of variable easily inside it. We have to use dolar sign with curly bracket ${} to add expression or variable. We can write any dynamic expression in this ${} syntax. According to our need we will write multi line string easily without the use of /n. It also came from ES6 in 2015.
