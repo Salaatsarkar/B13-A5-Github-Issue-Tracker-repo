@@ -112,7 +112,7 @@ const displayCard = (cards) =>{
                 </div>
                 <h2 class="font-semibold text-sm ">${card.title}</h2>
                 <p class="text-neutral/50 text-sm">${card.description}</p>
-                <div class="flex gap-1">
+                <div class="flex gap-1 flex-wrap md:flex-nowrap">
                     ${createElements(card.labels)}
                 </div>
                     <div class="divider -mx-5"></div>
